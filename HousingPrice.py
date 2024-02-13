@@ -63,3 +63,29 @@ print(housingNM.isnull().any())
 housingNM.fillna(value=0)
 
 #Identify the skewness and distribution
+
+
+df = housingDfOG.select_dtypes(include=['int', 'float'])
+
+# Step 2: Data Overview
+# Display the first few rows of the DataFrame to understand its structure
+print(df.head())
+
+# Display basic information about the DataFrame (column names, data types, etc.)
+print(df.info())
+
+# Step 3: Skewness Calculation
+# Calculate and display the skewness of each numeric column
+skewness = df.skew()
+print("Skewness of each column:\n", skewness)
+
+# Step 4: Distribution Visualization
+# For each numeric column, plot a histogram to visualize its distribution
+for column in df.select_dtypes(include=['float64', 'int64']).columns:
+    plt.figure(figsize=(10, 4))
+    sns.histplot(df[column], kde=True)
+    plt.title(f'Distribution of {column}')
+    plt.xlabel(column)
+    plt.ylabel('Frequency')
+    plt.show()
+    
