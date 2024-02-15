@@ -88,4 +88,3 @@ for column in df.select_dtypes(include=['float64', 'int64']).columns:
     plt.xlabel(column)
     plt.ylabel('Frequency')
     plt.show()
-    
